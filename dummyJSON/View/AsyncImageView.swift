@@ -43,7 +43,7 @@ struct AsyncImageView: View {
                     case .finished:
                         
                         isLoading = false
-                    case .failure(let error):
+                    case .failure(_):
                         
                         isLoading = false
                     }
