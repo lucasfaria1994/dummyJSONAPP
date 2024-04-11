@@ -4,9 +4,9 @@ dummyJSON is a SwiftUI iOS app for fetching and displaying product data from a d
 
 ## Overview
 
+- **Model:** Contains the data models used in the app.
 - **View:** Contains SwiftUI views for displaying products lists and product information.
 - **ViewModel:** Contains the view model responsible for fetching and managing each product data.
-- **Model:** Contains the data models used in the app.
 - **Network:** Contains the networking layer, for making API requests.
 
 ## Features
