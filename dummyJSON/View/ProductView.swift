@@ -16,7 +16,7 @@ struct ProductView: View {
                 .foregroundColor(Color.cyan)
                 .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
                 .padding()
-                .padding(.bottom, 30) // Add extra padding at the bottom to create a sense of 3D effect
+                .padding(.bottom, 30)
             
             VStack(spacing: 20) {
                 AsyncImageView(imageUrl: product.thumbnail)
