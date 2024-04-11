@@ -6,31 +6,34 @@
 //
 
 import Foundation
+import Combine
 
 class ProductViewModel: ObservableObject {
     
     @Published var products: [Product] = []
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         
-        self.fetchProducts()
+        fetchProducts()
     }
     
     private func fetchProducts() {
         
-        ProductsRequests.shared.fetchAllproducts { result in
-            
-            switch result {
+        ProductsRequests.shared.fetchAllProducts()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
                 
-            case .success(let products):
-                
-                DispatchQueue.main.async {
-                    self.products = products
+                switch completion {
+                case .failure:
+                    self.products = [MockProduct.mock]
+                case .finished:
+                    break
                 }
+            }, receiveValue: { products in
                 
-            case .failure(_):
-                self.products = [MockProduct.mock]
-            }
-        }
+                self.products = products
+            })
+            .store(in: &cancellables)
     }
 }

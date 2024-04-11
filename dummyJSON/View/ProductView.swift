@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct ProductView: View {
     let product: Product
